@@ -1,0 +1,23 @@
+{
+  "name": "playwrightcucumbertypescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "npx ts-node src/helper/init.ts",
+    "test": "cross-env ENV=staging cucumber-js --config=config/cucumber.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "fs-extra": "^11.3.0",
+    "ts-node": "^10.9.2",
+    "winston": "^3.17.0"
+  }
+}
