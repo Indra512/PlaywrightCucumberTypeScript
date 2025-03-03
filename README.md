@@ -57,6 +57,8 @@ This framework utilizes the following dependencies:
 * src -> Contains all the features & Typescript code
 * test-results -> Contains all the reports related file
 
+---  
+
 ## Running Tests
 To execute the tests, use the following command:
 
