@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS_20' // Make sure Jenkins has this configured in Global Tools
+    }
+
+    environment {
+        HOME = "${env.WORKSPACE}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Indra512/PlaywrightCucumberTypeScript.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Build TypeScript') {
+            steps {
+                sh 'npx tsc'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'npx cucumber-js'
+            }
+        }
+
+        stage('Archive Reports') {
+            steps {
+                junit 'reports/*.xml' // if you generate JUnit XML reports
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
+        }
+        failure {
+            mail to: 'mapleclub512@gmail.com',
+                 subject: "Jenkins Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
+                 body: "Check Jenkins for details: ${env.BUILD_URL}"
+        }
+    }
+}
