@@ -32,7 +32,7 @@ jobs:
       uses: dorny/test-reporter@v1
       with:
         name: Cucumber Report
-        path: test-reports/cucumber-report.xml
+        path: test-results/cucumber-report.xml
         reporter: java-junit
 
     - uses: actions/upload-artifact@v4

@@ -33,8 +33,9 @@ export class RegisterPage {
         } else {
             await this.page.locator(this.Elements.femalRadioButton).check();
         }
-        await this.page.waitForSelector(this.Elements.btnRegister, { timeout: 10000 });
-        await this.page.locator(this.Elements.btnRegister).click();
+        const regBtn = this.page.locator(this.Elements.btnRegister);
+        await regBtn.waitFor({state: 'visible'})
+        await regBtn.click();
         await this.page.waitForTimeout(1000);
     }
 
