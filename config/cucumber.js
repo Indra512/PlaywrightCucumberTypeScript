@@ -16,7 +16,7 @@ module.exports = {
             format: [
                 "html:test-results/cucumber-report.html",
                 "json:test-results/cucumber-report.json",
-                "junit:test-reports/cucumber-report.xml"
+                "junit:test-results/cucumber-report.xml"
             ],
             requireModule: [
                 "ts-node/register"
