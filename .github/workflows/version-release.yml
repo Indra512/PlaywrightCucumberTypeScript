@@ -2,8 +2,7 @@ name: Version Release CI
 
 on:
   push:
-    tags:
-      - 'v*' # triggers on version tags like v1.0.0, v2.3.4
+    branches: [main]
 
 jobs:
   test-and-email:
@@ -16,15 +15,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: lts/*
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests and generate report
-        run: |
-          mkdir -p reports
-          npm test -- --reporter=junit --reporter-options output=reports/test-report.xml
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm test run
 
       - name: Send test report via email
         uses: dawidd6/action-send-mail@v3
@@ -34,9 +34,9 @@ jobs:
           username: ${{ secrets.EMAIL_USER }}
           password: ${{ secrets.EMAIL_PASS }}
           subject: Test Report for ${{ github.ref }}
-          to: yourmail@example.com
+          to: mapleclub512@gmail.com
           from: CI Bot <${{ secrets.EMAIL_USER }}>
-          attachments: reports/test-report.xml
+          attachments: test-results/cucumber-report.xml
           body: |
             Hello,
 
