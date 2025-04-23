@@ -36,7 +36,7 @@ jobs:
           subject: Test Report for ${{ github.ref }}
           to: mapleclub512@gmail.com
           from: CI Bot <${{ secrets.EMAIL_USER }}>
-          attachments: test-results/cucumber-report.xml
+          attachments: test-results/cucumber-report.html
           body: |
             Hello,
 
