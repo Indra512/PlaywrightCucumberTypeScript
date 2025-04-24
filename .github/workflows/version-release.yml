@@ -48,25 +48,3 @@ jobs:
 
             Best,
             Your GitHub Actions CI/CD Pipeline
-
-  # tester-pipeline:
-  #   if: github.event_name == 'repository_dispatch'
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: lts/*
-
-  #     - name: Install dependencies
-  #       run: npm install
-
-  #     - name: Install Playwright Browsers
-  #       run: npx playwright install --with-deps
-
-  #     - name: Run Playwright Tests
-  #       run: npx playwright test 
