@@ -29,9 +29,6 @@ jobs:
       - name: Run Playwright tests
         run: npm run test
 
-      # - name: Generate HTML Report
-        # run: npx playwright show-report --output=test-results/cucumber-report.html
-
       - name: Send test report via email
         if: always()
         uses: dawidd6/action-send-mail@v3
