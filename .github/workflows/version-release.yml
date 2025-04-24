@@ -2,7 +2,7 @@ name: Version Release CI
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   test-and-email:
