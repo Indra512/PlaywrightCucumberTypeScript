@@ -38,4 +38,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-report
-          path: C:\Users\test\test\test-dashboard\exporter
+          path: test-dashboard/exporter
