@@ -27,13 +27,15 @@ jobs:
       - name: Install Node.js Type Definitions (Fix ts-node error)
         run: npm install --save-dev @types/node
 
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
       - name: Run Tests
         run: npm test
 
-      - name: Upload Cucumber HTML Report Artifact
+      - name: Upload Cucumber HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cucumber-report
-          path: C:\Users\test\test\test-dashboard\exporter/cucumber-report.html  
-
+          path: C:\Users\test\test\test-dashboard\exporter/cucumber-report.html
