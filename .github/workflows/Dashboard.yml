@@ -32,7 +32,7 @@ jobs:
 
       - name: Upload Cucumber HTML Report Artifact
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cucumber-report
           path: C:\Users\test\test\test-dashboard\exporter/cucumber-report.html  
