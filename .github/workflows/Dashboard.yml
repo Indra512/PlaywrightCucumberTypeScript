@@ -1,0 +1,21 @@
+name: Run Tests and Save Report
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Tests
+        run: |
+          # Your test command
+          npm test
+
+      - name: Copy Report to Exporter Directory
+        run: |
+          # Send file to your local machine via scp or any syncing method
+          scp cucumber-report.html user@localmachine:C:\Users\test\test\test-dashboard\exporter/cucumber-report.html
