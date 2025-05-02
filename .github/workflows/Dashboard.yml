@@ -1,21 +1,39 @@
-name: Run Tests and Save Report
+name: Run Tests and Generate Report
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Node.js Type Definitions (Fix ts-node error)
+        run: npm install --save-dev @types/node
 
       - name: Run Tests
-        run: |
-          # Your test command
-          npm test
+        run: npm test
 
-      - name: Copy Report to Exporter Directory
-        run: |
-          # Send file to your local machine via scp or any syncing method
-          scp cucumber-report.html user@localmachine:C:\Users\test\test\test-dashboard\exporter/cucumber-report.html
+      - name: Upload Cucumber HTML Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cucumber-report
+          path: C:\Users\test\test\test-dashboard\exporter/cucumber-report.html  
+
