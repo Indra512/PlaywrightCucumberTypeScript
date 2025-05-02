@@ -1,41 +1,9 @@
-name: Run Tests and Generate Report
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Install Node.js Type Definitions (Fix ts-node error)
-        run: npm install --save-dev @types/node
-
-      - name: Install Playwright Browsers
-        run: npx playwright install
-
-      - name: Run Tests
-        run: npm test
-
-      - name: Upload Cucumber HTML Report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cucumber-report
-          path: test-dashboard/exporter
+    - name: Install BeautifulSoup and Prometheus Client
+      run: |
+        python -m pip install --upgrade pip
+        pip install beautifulsoup4 prometheus_client
