@@ -1,57 +1,57 @@
-name: Automation Workflow
-on:
-  push:
-    branches: [dev]
-  repository_dispatch:
-    types: [dev-completed]
+#name: Automation Workflow
+#on:
+#  push:
+ #   branches: [dev]
+ # repository_dispatch:
+  #  types: [dev-completed]
 
-permissions:
-    contents: read
-    checks: write
-    id-token: write
+#permissions:
+#    contents: read
+#    checks: write
+ #   id-token: write
 
-jobs:
-  test:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+#jobs:
+ # test:
+  #  timeout-minutes: 60
+   # runs-on: ubuntu-latest
+    #steps:
+    #- uses: actions/checkout@v4
+    #- uses: actions/setup-node@v4
+     # with:
+      #  node-version: lts/*
         
-    - name: Install dependencies
-      run: npm ci
+    #- name: Install dependencies
+     # run: npm ci
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+    #- name: Install Playwright Browsers
+     # run: npx playwright install --with-deps
 
-    - name: Run Playwright tests
-      run: npm test run
+   # - name: Run Playwright tests
+    #  run: npm test run
 
-    - name: Send test report via email
-      if: always()
-      uses: dawidd6/action-send-mail@v3
-      with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USER }}
-          password: ${{ secrets.EMAIL_PASS }}
-          subject: Test Report - ${{ github.run_number }}
-          to: mapleclub512@gmail.com
-          from: CI Bot <${{ secrets.EMAIL_USER }}>
-          attachments: test-results/cucumber-report.html
-          body: |
-            Hello,
+   # - name: Send test report via email
+    #  if: always()
+     # uses: dawidd6/action-send-mail@v3
+      #with:
+       #   server_address: smtp.gmail.com
+        #  server_port: 465
+         # username: ${{ secrets.EMAIL_USER }}
+          #password: ${{ secrets.EMAIL_PASS }}
+         # subject: Test Report - ${{ github.run_number }}
+          #to: mapleclub512@gmail.com
+          #from: CI Bot <${{ secrets.EMAIL_USER }}>
+          #attachments: test-results/cucumber-report.html
+          #body: |
+          #  Hello,
 
-            The test report for version ${{ github.ref }} (Run #${{ github.run_number }}) is attached.
+           # The test report for version ${{ github.ref }} (Run #${{ github.run_number }}) is attached.
 
-            Best,
-            Your GitHub Actions CI/CD Pipeline
+            #Best,
+     #       Your GitHub Actions CI/CD Pipeline
 
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: test-results
-        path: test-results/
-        retention-days: 2
+   # - uses: actions/upload-artifact@v4
+   #   if: ${{ !cancelled() }}
+    #  with:
+     #   name: test-results
+      #  path: test-results/
+     #   retention-days: 2
