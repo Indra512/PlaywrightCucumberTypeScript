@@ -26,6 +26,13 @@ const skipped = report.filter(t => t.elements.some(e => e.steps.some(s => s.resu
 const client = new InfluxDB({ url, token });
 const writeApi = client.getWriteApi(org, bucket);
 
+writeApi.useDefaultTags({ host: 'host1' })
+
+// Example point
+const point = new Point('test_results')
+  .tag('status', 'pass')
+  .intField('duration', 123)
+
 const point = new Point('test_results')
   .intField('total', total)
   .intField('passed', passed)
