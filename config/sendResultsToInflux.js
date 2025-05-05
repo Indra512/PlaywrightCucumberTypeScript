@@ -8,9 +8,9 @@ const { InfluxDB, Point } = require('@influxdata/influxdb-client');
 //const bucket = process.env.INFLUXDB_BUCKET;
 
 const url = "http://localhost:8086";
-const token = "n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==";
-const org = "my-org";
-const bucket = "playwright_metrics";
+const token = "moOIm_nUYMZHuxxtI8z7pIjkuCj3xCkKda7JSSvvbtwKoJlaucMH0uHbCbC_bjXNGiQ6B5HfHyhtFZkNRqrcqg==";
+const org = "teknotrait";
+const bucket = "automations-results";
 
 // Read JSON report
 const rawData = fs.readFileSync('test-results/cucumber-report.json');
