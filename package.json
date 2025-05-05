@@ -11,6 +11,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.35.0"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.50.1",
