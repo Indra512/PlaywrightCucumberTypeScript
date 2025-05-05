@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { InfluxDB, Point } = require('@influxdata/influxdb-client');
 
-Influx Config
+//Influx Config
 const url = process.env.INFLUXDB_URL;
 const token = process.env.INFLUXDB_TOKEN;
 const org = process.env.INFLUXDB_ORG;
