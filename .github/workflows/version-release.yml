@@ -27,9 +27,9 @@ jobs:
           DOCKER_INFLUXDB_INIT_MODE: setup
           DOCKER_INFLUXDB_INIT_USERNAME: admin
           DOCKER_INFLUXDB_INIT_PASSWORD: admin123
-          DOCKER_INFLUXDB_INIT_ORG: my-org
-          DOCKER_INFLUXDB_INIT_BUCKET: playwright_metrics
-          DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==
+          DOCKER_INFLUXDB_INIT_ORG: teknotrait
+          DOCKER_INFLUXDB_INIT_BUCKET: automations-results
+          DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: moOIm_nUYMZHuxxtI8z7pIjkuCj3xCkKda7JSSvvbtwKoJlaucMH0uHbCbC_bjXNGiQ6B5HfHyhtFZkNRqrcqg==
 
     steps:
       - name: Checkout code
@@ -54,9 +54,9 @@ jobs:
 
         env:
           INFLUXDB_URL: http://localhost:8086
-          INFLUXDB_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==
-          INFLUXDB_ORG: my-org
-          INFLUXDB_BUCKET: playwright_metrics
+          INFLUXDB_TOKEN: moOIm_nUYMZHuxxtI8z7pIjkuCj3xCkKda7JSSvvbtwKoJlaucMH0uHbCbC_bjXNGiQ6B5HfHyhtFZkNRqrcqg==
+          INFLUXDB_ORG: teknotrait
+          INFLUXDB_BUCKET: automations-results
 
       - name: Send test report via email
         if: always()
