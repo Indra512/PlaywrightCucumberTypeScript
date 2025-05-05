@@ -11,6 +11,26 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
+    services:
+      influxdb:
+        image: influxdb:2.7
+        ports:
+          - 8086:8086
+        options: >-
+          --health-cmd "curl --fail http://localhost:8086/health || exit 1"
+          --health-interval 5s
+          --health-timeout 2s
+          --health-retries 10
+
+        env:
+          INFLUXDB_REPORTING_DISABLED: "true"
+          DOCKER_INFLUXDB_INIT_MODE: setup
+          DOCKER_INFLUXDB_INIT_USERNAME: admin
+          DOCKER_INFLUXDB_INIT_PASSWORD: admin123
+          DOCKER_INFLUXDB_INIT_ORG: my-org
+          DOCKER_INFLUXDB_INIT_BUCKET: playwright_metrics
+          DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,6 +48,15 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run test
+
+      - name: Push results to InfluxDB
+        run: npm run send-results
+
+        env:
+          INFLUXDB_URL: http://localhost:8086
+          INFLUXDB_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==
+          INFLUXDB_ORG: my-org
+          INFLUXDB_BUCKET: playwright_metrics
 
       - name: Send test report via email
         if: always()
