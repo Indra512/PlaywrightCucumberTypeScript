@@ -9,7 +9,7 @@ status="${test.results[0].status}",duration=${test.results[0].duration}`;
 axios.post('http://localhost:8086/api/v2/write?org=YourOrg&bucket=test_metrics&precis
  ion=ms', lines, { 
 headers: { 
-'Authorization': 'Token YourToken', 
+'Authorization': 'n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==', 
 'Content-Type': 'text/plain' 
 } 
 }) 
