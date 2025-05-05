@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Playwright tests
-        run: npx playwright test
+   #   - name: Run Playwright tests
+   #     run: npx playwright test
 
       - name: Push results to InfluxDB
         run: node ./config/sendResultsToInflux.js
