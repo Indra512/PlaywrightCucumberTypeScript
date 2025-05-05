@@ -1,5 +1,5 @@
-import { defineConfig } from '@playwright/test';
-
-export default defineConfig({
-  reporter: [['json', { outputFile: './test-results/cucumber-report.json' }]],
-});
+reporter: [ 
+['list'], 
+['json', { outputFile: 'test-results/results.json' }], 
+['allure-playwright'] 
+]
