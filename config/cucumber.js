@@ -1,25 +1,15 @@
 module.exports = {
-        default: {
-            tags: process.env.npm_config_TAGS || "",
-            formatOptions: {
-                snippetInterface: "async-await"
-            },
-            paths: [
-                "src/test/features/*.feature"
-            ],
-            publishQuite: true,
-            dryRun: false,
-            require: [
-                "src/test/steps_definitions/*.ts",
-                "src/test/hooks/hooks.ts"
-            ],
-            format: [
-                "html:test-results/cucumber-report.html",
-                "json:test-results/cucumber-report.json",
-                "junit:test-results/cucumber-report.xml"
-            ],
-            requireModule: [
-                "ts-node/register"
-            ]
-        }
-}
+  default: [
+    "--require-module ts-node/register",
+    "--require src/test/steps_definitions/*.ts",
+    "--require src/test/hooks/hooks.ts",
+    "--format html:test-results/cucumber-report.html",
+    "--format json:test-results/cucumber-report.json",
+    "--format junit:test-results/cucumber-report.xml",
+    "--publish-quiet",
+    "--dry-run false",
+    --tags ${process.env.npm_config_TAGS || ""},
+    "--format-options '{\"snippetInterface\": \"async-await\"}'",
+    "src/test/features/*.feature"
+  ].join(" ")
+};
