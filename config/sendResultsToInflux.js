@@ -7,10 +7,10 @@ const { InfluxDB, Point } = require('@influxdata/influxdb-client');
 //const org = process.env.INFLUXDB_ORG;
 //const bucket = process.env.INFLUXDB_BUCKET;
 
-const url = http://localhost:8086/orgs/2b57ae60bc5045c8;
-const token = n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==;
-const org = my-org;
-const bucket = playwright_metrics;
+const url = "http://localhost:8086/orgs/2b57ae60bc5045c8";
+const token = "n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA==";
+const org = "my-org";
+const bucket = "playwright_metrics";
 
 // Read JSON report
 const rawData = fs.readFileSync('test-results/cucumber-report.json');
