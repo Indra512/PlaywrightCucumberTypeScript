@@ -13,7 +13,7 @@ const org = my-org;
 const bucket = playwright_metrics;
 
 // Read JSON report
-const rawData = fs.readFileSync('test-results/');
+const rawData = fs.readFileSync('test-results/cucumber-report.json');
 const report = JSON.parse(rawData);
 
 // Parse results
