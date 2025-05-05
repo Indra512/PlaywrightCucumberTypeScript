@@ -31,4 +31,4 @@ jobs:
      #  run: npx playwright test
 
       - name: Push results to InfluxDB
-        run: node sendResultsToInflux.js
+        run: node ./config/sendResultsToInflux.js
