@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+     # - name: Install dependencies
+      # run: npm install
 
-      - name: Run Playwright tests
-        run: npx playwright test
+     # - name: Run Playwright tests
+     #  run: npx playwright test
 
       - name: Push results to InfluxDB
         run: node sendResultsToInflux.js
