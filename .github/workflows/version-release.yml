@@ -49,6 +49,9 @@ jobs:
       - name: Run Playwright tests
         run: npm run test
 
+      - name: Check InfluxDB Health
+        run: curl -i http://localhost:8086/health
+
       - name: Push results to InfluxDB
         run: npm run send-results
 
