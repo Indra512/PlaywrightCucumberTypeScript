@@ -6,6 +6,7 @@
     "pretest": "npx ts-node src/helper/init.ts",
     "test": "cross-env ENV=staging cucumber-js --config=config/cucumber.js",
     "send-results": "node ./config/sendResultsToInflux.js"
+    "test-and-send": "npm run test && npm run send-results"
   },
   "keywords": [],
   "author": "",
