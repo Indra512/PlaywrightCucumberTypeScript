@@ -1,6 +1,6 @@
 const axios = require('axios'); 
 const fs = require('fs'); 
-const data = JSON.parse(fs.readFileSync('./test-results/results.json')); 
+const data = JSON.parse(fs.readFileSync('./test-results/cucumber-report.json')); 
 const testResults = data.suites.flatMap(suite => suite.specs.flatMap(spec => spec.tests)); 
 const lines = testResults.map(test => { 
 return `playwright_tests,name=${test.title.replace(/ /g, "_")} 
