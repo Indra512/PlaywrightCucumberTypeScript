@@ -8,7 +8,7 @@ module.exports = {
     "--format junit:test-results/cucumber-report.xml",
     "--publish-quiet",
     "--dry-run false",
-    --tags ${process.env.npm_config_TAGS || ""},
+    --tags process.env.npm_config_TAGS || "",
     "--format-options '{\"snippetInterface\": \"async-await\"}'",
     "src/test/features/*.feature"
   ].join(" ")
