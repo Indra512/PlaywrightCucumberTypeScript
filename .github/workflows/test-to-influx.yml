@@ -9,11 +9,11 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
-    env:
-      INFLUXDB_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA== 
-      INFLUXDB_ORG:  my-org
-      INFLUXDB_BUCKET:  playwright_metrics
-      INFLUXDB_URL: http://localhost:8086/orgs/2b57ae60bc5045c8
+  #  env:
+  #    INFLUXDB_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA== 
+  #    INFLUXDB_ORG:  my-org
+   #   INFLUXDB_BUCKET:  playwright_metrics
+    #  INFLUXDB_URL: http://localhost:8086/orgs/2b57ae60bc5045c8
 
     steps:
       - name: Checkout code
