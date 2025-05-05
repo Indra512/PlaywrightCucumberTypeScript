@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      INFLUXDB_TOKEN: ${{ secrets.INFLUXDB_TOKEN }}
-      INFLUXDB_ORG: ${{ secrets.INFLUXDB_ORG }}
-      INFLUXDB_BUCKET: ${{ secrets.INFLUXDB_BUCKET }}
-      INFLUXDB_URL: ${{ secrets.INFLUXDB_URL }}
+      INFLUXDB_TOKEN: n3EQDWpJAplsOEY7kq34rTbU-w8Th61daSxKjkZGLiaADmsTcqXhvtZpItRLajikKT9s1pchxcrv-0KGHlbNjA== 
+      INFLUXDB_ORG:  my-org
+      INFLUXDB_BUCKET:  playwright_metrics
+      INFLUXDB_URL: http://localhost:8086/orgs/2b57ae60bc5045c8
 
     steps:
       - name: Checkout code
