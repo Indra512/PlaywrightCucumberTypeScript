@@ -13,6 +13,6 @@ Then Login should be success
 
 Scenario: login_should_not_be_success
 When The user enters the username as "abc_xyz"
-And The user enters the password as "1234Pass"
+And The user enters th password as "1234Pass"
 And The user clicks on Login button
 Then Login should fail
